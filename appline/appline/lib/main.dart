@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'chat_screen.dart';
 import 'group_screen.dart';
 import 'profile_screen.dart';
+import 'chat_list_screen.dart';
 
 void main() {
   runApp(const ApplineApp());
@@ -16,7 +16,8 @@ class ApplineApp extends StatelessWidget {
       title: 'Appline',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: const Color(0xFF00C300), // Hijau LINE
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF00C300)),
+        useMaterial3: true,
       ),
       home: const HomeScreen(),
     );
@@ -34,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    const ChatScreen(),
+    const ChatListScreen(),
     const GroupScreen(),
     const ProfileScreen(),
   ];
