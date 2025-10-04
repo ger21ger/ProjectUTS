@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'settings_screen.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -194,11 +195,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: [
                 _profileButton(Icons.edit, "Edit Profile", _editProfile),
                 _profileButton(Icons.photo_camera, "Change Photo", _pickImage),
-                _profileButton(
-                  Icons.settings,
-                  "Settings",
-                  () => _showSnackBar("Settings clicked"),
-                ),
+                _profileButton(Icons.settings, "Settings", () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsScreen()),
+                  );
+                }),
               ],
             ),
           ),
