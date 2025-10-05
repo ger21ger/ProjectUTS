@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/group_screen.dart';
-import 'profile_screen.dart';
+import 'screens/profile_screen.dart';
 import 'screens/chat_list_screen.dart';
 import 'package:provider/provider.dart';
 import 'theme_notifier.dart';

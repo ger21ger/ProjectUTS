@@ -3,6 +3,7 @@ import '../models/chat_contact.dart';
 import '../widgets/chat_contact_tile.dart';
 import 'chat_screen.dart';
 import 'new_contact_screen.dart';
+import 'settings_screen.dart';
 
 class ChatListScreen extends StatefulWidget {
   const ChatListScreen({super.key});
@@ -16,7 +17,6 @@ class _ChatListScreenState extends State<ChatListScreen> {
   final TextEditingController _searchController = TextEditingController();
   List<ChatContact> _filteredContacts = [];
 
-  // Diubah dari final menjadi var agar bisa ditambahkan
   var _allContacts = [
     ChatContact(name: "Budi Santoso", lastMessage: "Lagi ngerjain project Flutter nih...", imageUrl: 'https://i.pravatar.cc/150?img=11', time: "10:05", unreadCount: 2, isOnline: true),
     ChatContact(name: "Citra Lestari", lastMessage: "Oke, nanti aku kabari lagi ya!", imageUrl: 'https://i.pravatar.cc/150?img=32', time: "09:48", unreadCount: 0, isOnline: false),
@@ -95,7 +95,12 @@ class _ChatListScreenState extends State<ChatListScreen> {
           IconButton(icon: const Icon(Icons.search), onPressed: _startSearch),
           PopupMenuButton<String>(
             onSelected: (value) {
-              if (value == 'settings') print("Settings dipilih");
+             if (value == 'settings') {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SettingsScreen()),
+                );
+              }
             },
             itemBuilder: (BuildContext context) => [
               const PopupMenuItem(value: 'settings', child: Text('Settings')),
