@@ -23,7 +23,14 @@ class GroupScreen extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => const ChatScreen()),
+                MaterialPageRoute(
+                  builder: (_) => ChatScreen(
+                    // Mengirim nama grup sesuai item yang di-klik
+                    contactName: groups[index],
+                    // Mengirim URL gambar placeholder untuk grup
+                    contactImageUrl: 'https://i.pravatar.cc/150?img=5',
+                  ),
+                ),
               );
             },
           );

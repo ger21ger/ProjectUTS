@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'group_screen.dart';
+import 'screens/group_screen.dart';
 import 'profile_screen.dart';
-import 'chat_list_screen.dart';
+import 'screens/chat_list_screen.dart';
 
 void main() {
   runApp(const ApplineApp());
@@ -18,6 +18,7 @@ class ApplineApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF00C300)),
         useMaterial3: true,
+        scaffoldBackgroundColor: const Color(0xFFE8F0F5),
       ),
       home: const HomeScreen(),
     );
