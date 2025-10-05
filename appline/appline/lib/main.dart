@@ -2,9 +2,16 @@ import 'package:flutter/material.dart';
 import 'screens/group_screen.dart';
 import 'profile_screen.dart';
 import 'screens/chat_list_screen.dart';
+import 'package:provider/provider.dart';
+import 'theme_notifier.dart';
 
 void main() {
-  runApp(const ApplineApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeNotifier(),
+      child: const ApplineApp(),
+    ),
+  );
 }
 
 class ApplineApp extends StatelessWidget {
@@ -12,19 +19,29 @@ class ApplineApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeNotifier = Provider.of<ThemeNotifier>(context);
+
     return MaterialApp(
       title: 'Appline',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
+      themeMode: themeNotifier.themeMode,
+      theme: ThemeData( // Tema untuk mode terang (light)
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF00C300)),
         useMaterial3: true,
         scaffoldBackgroundColor: const Color(0xFFE8F0F5),
+      ),
+      darkTheme: ThemeData( // Tema untuk mode gelap (dark)
+        brightness: Brightness.dark,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF00C300),
+          brightness: Brightness.dark,
+        ),
+        useMaterial3: true,
       ),
       home: const HomeScreen(),
     );
   }
 }
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 

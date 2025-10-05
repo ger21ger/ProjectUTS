@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import '../models/chat_contact.dart';
-import '../screens/chat_screen.dart';
 
 class ChatContactTile extends StatelessWidget {
   final ChatContact contact;
+  final VoidCallback onTap;
 
-  const ChatContactTile({super.key, required this.contact});
+  const ChatContactTile({
+    super.key,
+    required this.contact,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -62,17 +66,7 @@ class ChatContactTile extends StatelessWidget {
                 const SizedBox(height: 22) // Placeholder agar rata
             ],
           ),
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ChatScreen(
-                  contactName: contact.name,
-                  contactImageUrl: contact.imageUrl,
-                ),
-              ),
-            );
-          },
+          onTap: onTap,
         ),
         const Divider(height: 1, indent: 90, endIndent: 16),
       ],
